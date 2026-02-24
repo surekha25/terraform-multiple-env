@@ -4,6 +4,7 @@ variable "project" {
 }
 
 variable "env" {
+    type = map
     default = {
         prod = "prod"
         dev = "dev"
@@ -16,6 +17,7 @@ variable "ami_id" {
 }
 
 variable "instance_type" {
+    type = map
     default = {
         dev = "t3.micro"
         prod = "t3.large"

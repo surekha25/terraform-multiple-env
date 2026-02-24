@@ -1,12 +1,12 @@
 resource "aws_instance" "terraform" {
   ami           = var.ami_id
-  instance_type = var.instance_type
+  instance_type = lookup(var.instance_type, terraform.workspace)
   vpc_security_group_ids = [aws_security_group.terraform_allow_ports.id]
 
   tags = merge(
     local.common_tags,
     {
-      Name = "${local.common_name}-tfvars-multiple-env"
+      Name = "${local.common_name}-workspace"
     }
   )
 }
